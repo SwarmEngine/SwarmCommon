@@ -9,3 +9,5 @@ set(SWARM_BASE_HEADERS
 foreach(Header ${SWARM_BASE_HEADERS})
     install(FILES ${Header} DESTINATION include)
 endforeach()
+
+install(FILES src/cmake/SwarmEngineBase.cmake DESTINATION cmake)
