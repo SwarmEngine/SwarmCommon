@@ -37,6 +37,10 @@ if(NOT ENGINE_INSTALL_LOCATION)
     set(ENGINE_INSTALL_LOCATION ${CMAKE_SOURCE_DIR}/engine)
 endif(NOT ENGINE_INSTALL_LOCATION)
 
+if(NOT EXTERNAL_INSTALL_LOCATION)
+    set(EXTERNAL_INSTALL_LOCATION ${CMAKE_SOURCE_DIR}/external)
+endif(NOT EXTERNAL_INSTALL_LOCATION)
+
 include(ExternalProject)
 find_package(Git REQUIRED)
 
@@ -66,8 +70,8 @@ function(SwarmAddExternalDependency Name GitRepository)
             PREFIX ${Name}
             GIT_REPOSITORY ${GitRepository}
             UPDATE_COMMAND ${GIT_EXECUTABLE} pull
-            CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${ENGINE_INSTALL_LOCATION}
-            )
+            CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTERNAL_INSTALL_LOCATION}
+    )
     set(CurrentPackageDependencies ${CurrentPackageDependencies} ${Name} PARENT_SCOPE)
 endfunction(SwarmAddExternalDependency)
 
