@@ -17,6 +17,7 @@
 #pragma once
 
 #include <string>
+#include <stdexcept>
 
 
 // *****************
@@ -62,19 +63,19 @@ namespace swarm {
 namespace std {
     inline string to_string(swarm::MemoryPrefix pre) {
         switch(pre) {
-            case Swarm::MEM_BYTE: return "B";
-            case Swarm::MEM_KB: return "KB";
-            case Swarm::MEM_MB: return "MB";
-            case Swarm::MEM_GB: return "GB";
+            case swarm::MEM_BYTE: return "B";
+            case swarm::MEM_KB: return "KB";
+            case swarm::MEM_MB: return "MB";
+            case swarm::MEM_GB: return "GB";
             default: return "";
         }
     }
     inline string to_string(swarm::BitWidth width) {
         switch(width) {
-            case Swarm::BIT_8: return "8-Bit";
-            case Swarm::BIT_16: return "16-Bit";
-            case Swarm::BIT_32: return "32-Bit";
-            case Swarm::BIT_64: return "64-Bit";
+            case swarm::BIT_8: return "8-Bit";
+            case swarm::BIT_16: return "16-Bit";
+            case swarm::BIT_32: return "32-Bit";
+            case swarm::BIT_64: return "64-Bit";
             default: return "";
         }
     }
@@ -89,6 +90,6 @@ namespace std {
 namespace swarm {
     class SwarmException : public std::runtime_error {
     public:
-        explicit SwarmException(const std::string& message) : std::runtime_error(message) {}
+        explicit SwarmException(const std::string& message) : runtime_error(message) {}
     };
 }
