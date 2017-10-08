@@ -87,10 +87,8 @@ namespace std {
 // *******************
 
 namespace swarm {
-    namespace exception {
-        class SwarmException : public std::runtime_error {
-        public:
-            explicit SwarmException(const std::string& message) : std::runtime_error(message) {}
-        };
-    }
+    class SwarmException : public std::runtime_error {
+    public:
+        explicit SwarmException(const std::string& message) : std::runtime_error(message) {}
+    };
 }
