@@ -23,7 +23,7 @@
 //  Engine Typedefs
 // *****************
 
-namespace Swarm {
+namespace swarm {
 
     typedef     unsigned int    SWMenum;
     typedef     unsigned int    SWMuint;
@@ -41,7 +41,7 @@ namespace Swarm {
 //  Engine Enumerations
 // *********************
 
-namespace Swarm {
+namespace swarm {
 
     enum MemoryPrefix {
         MEM_BYTE = 1,
@@ -60,7 +60,7 @@ namespace Swarm {
 }
 
 namespace std {
-    inline string to_string(Swarm::MemoryPrefix pre) {
+    inline string to_string(swarm::MemoryPrefix pre) {
         switch(pre) {
             case Swarm::MEM_BYTE: return "B";
             case Swarm::MEM_KB: return "KB";
@@ -69,7 +69,7 @@ namespace std {
             default: return "";
         }
     }
-    inline string to_string(Swarm::BitWidth width) {
+    inline string to_string(swarm::BitWidth width) {
         switch(width) {
             case Swarm::BIT_8: return "8-Bit";
             case Swarm::BIT_16: return "16-Bit";
@@ -77,5 +77,20 @@ namespace std {
             case Swarm::BIT_64: return "64-Bit";
             default: return "";
         }
+    }
+}
+
+
+
+// *******************
+//  Engine Base Types
+// *******************
+
+namespace swarm {
+    namespace exception {
+        class SwarmException : public std::runtime_error {
+        public:
+            explicit SwarmException(const std::string& message) : std::runtime_error(message) {}
+        };
     }
 }
